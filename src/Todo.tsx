@@ -30,12 +30,13 @@ const Todo = () => {
 
 return(
 
-    <div className="max-w-md mx-auto mt-8 p-4 bg-grey-100 shadow-md rounded-md">
+    <div className="max-w-md mx-auto mt-8 p-4 bg-grey-100 shadow-md rounded-md border-2 border-grey-200">
         <h1 className="text-xl font-bold mb-4">To-Do List</h1>
 
         <input type="text"
         className="w-full p-2 border rounded-md"
         placeholder="Enter a task"
+        autoFocus
         value={task}
         onChange={(e) => setTask(e.target.value)} />
 
@@ -46,9 +47,11 @@ return(
 
         <ul className="mt-4">
             {tasks.map((t, index)=>(
-                <li key={index} className="bg-white p-2 mt-2 rounded-md shadow">
-                <span onClick={()=>toggleTask(index)}>{t.text}</span>
-                <button onClick={()=>deleteTask(index)}> ❌ </button>
+                <li key={index} className={`bg-white p-2 mt-2 rounded-md shadow flex justify-between ${t.completed ? "line-through text-grey-500": ""}`}>
+                <span onClick={()=>toggleTask(index)}
+                 className="cursor-pointer">{t.text}</span>
+                <button onClick={()=>deleteTask(index)} 
+                className=" text-red-500 hover:text-red-700"> ❌ </button>
                 </li>
             ))}
         </ul>
