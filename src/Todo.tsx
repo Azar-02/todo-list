@@ -14,6 +14,11 @@ const Todo = () => {
         }
     };
 
+    //Delete task from the list
+    const deleteTask = (index:number) => {
+        setTasks(tasks.filter((_, i) => i == index));
+    };
+
 return(
 
     <div>
@@ -28,7 +33,10 @@ return(
 
         <ul>
             {tasks.map((t, index)=>(
-                <li key={index}>{t}</li>
+                <li key={index}>
+                    {t}
+                <button onClick={()=>deleteTask(index)}> ❌ </button>
+                </li>
             ))}
         </ul>
     </div>
