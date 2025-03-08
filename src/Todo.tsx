@@ -16,7 +16,7 @@ const Todo = () => {
 
     //Delete task from the list
     const deleteTask = (index:number) => {
-        setTasks(tasks.filter((_, i) => i == index));
+        setTasks(tasks.filter((_, i) => i !== index));
     };
 
 return(
