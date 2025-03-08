@@ -3,15 +3,24 @@ import { useState } from "react"
 
 const Todo = () => {
     const [task, setTask] = useState<string>("");
-    const[tasks, setTasks] = useState<string[]>([]);
+    //Change the tasks state to store an object
+    const[tasks, setTasks] = useState<{text:string; completed:boolean}[]>([]);
 
 
     // Add task to the list
     const addTask = () =>{
         if(task.trim()){
-            setTasks([...tasks, task]);
+            setTasks([...tasks, {text:task, completed:false}]);
             setTask("");
         }
+    };
+
+    //Toggle task completion
+    const toggleTask = (index:number) => {
+        setTasks(
+            tasks.map((t, i) =>
+            i === index ? {...t, completed: !t.completed} : t)
+        )
     };
 
     //Delete task from the list
@@ -34,7 +43,7 @@ return(
         <ul>
             {tasks.map((t, index)=>(
                 <li key={index}>
-                    {t}
+                <span onClick={()=>toggleTask(index)}>{t.text}</span>
                 <button onClick={()=>deleteTask(index)}> ❌ </button>
                 </li>
             ))}
