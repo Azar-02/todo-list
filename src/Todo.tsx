@@ -32,6 +32,8 @@ return(
             ))}
         </ul>
     </div>
-)
+);
 
-}
+};
+
+export default Todo;
