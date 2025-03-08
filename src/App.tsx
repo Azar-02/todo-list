@@ -1,6 +1,10 @@
-function App() {
+import Todo from "./Todo"
+
+const App = () => {
   return (
-    <div className="text-red-500 text-6xl">App</div>
+    <div>
+      <Todo/>
+    </div>
   )
 }
 
